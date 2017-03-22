@@ -1,28 +1,39 @@
 == README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Assignment:- # Generic Tagging JSON API
+    We will be building a Generic Tagging JSON API that can store, retrieve, delete and report on the usage of a "tag" across different entities. This is a guide for the endpoints, if you think you have a        better route or would like to modify the naming/schema feel free.
 
 
-Please feel free to use a different markup language if you do not plan to run
+
+Changed the schema and routes a bit.
+Steps needs to run test cases:-
+1)Run server and go to /admin .
+2)Add some tags you want in your API.
+
+Schema:-
+1)Two separate models maintaing tags and entities ,connected with HABTM(many to many) relation with each other, using a seperate join table.
+2)Also maintaing counts for both tags to entities and vice -versa .
+
+routes:-
+	As at a time only one entity with same name can exist in db so routes for getting instances changed from /:entity_type/:entity_id to /:entity id.
+
+1) Create entry:- Post /tag
+ex:
+   Command to add entities with tag- curl -X POST -H "Content-Type: application/json" -d '{"entity": {"name": "Article", "tag_ids": [1,2,3]}}' localhost:3000/tag.json .
+
+   where Article is name for entity, and [1,2,3] are tag ids which you want to tag with .
+
+
+2) Retrieve an Entry:- get /tags/:entity_id .
+
+
+3) Remove an Entry:- delete /tags/:entity_id .
+
+4) Retrieve Stats about all Tags:- /stats .
+
+5) Retrieve Stats about a specific Entity:- /stats/:entity_id .
+
+
+	
+  
+
 <tt>rake doc:app</tt>.
