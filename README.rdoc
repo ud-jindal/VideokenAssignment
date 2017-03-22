@@ -13,9 +13,8 @@ Schema:-
 1)Two separate models maintaing tags and entities ,connected with HABTM(many to many) relation with each other, using a seperate join table.
 2)Also maintaing counts for both tags to entities and vice -versa .
 
-routes:-
-	As at a time only one entity with same name can exist in db so routes for getting instances changed from /:entity_type/:entity_id to /:entity id.
-
+routes:-	
+As at a time only one entity with same name can exist in db so routes for getting instances changed from /:entity_type/:entity_id to /:entity id.
 1) Create entry:- Post /tag
 ex:
    Command to add entities with tag- curl -X POST -H "Content-Type: application/json" -d '{"entity": {"name": "Article", "tag_ids": [1,2,3]}}' localhost:3000/tag.json .
@@ -26,8 +25,7 @@ ex:
 2) Retrieve an Entry:- get /tags/:entity_id .
 
 
-3) Remove an Entry:- delete /tags/:entity_id .
-
+3) Remove an Entry:- delete /tags/:entity_id.json
 4) Retrieve Stats about all Tags:- /stats .
 
 5) Retrieve Stats about a specific Entity:- /stats/:entity_id .
